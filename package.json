@@ -1,10 +1,11 @@
 {
-  "name": "find-my-phone",
+  "name": "find-my-iphone",
   "version": "1.0.0",
-  "description": "Alexa skill - find my phone",
+  "description": "Alexa skill - find my iPhone",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "skill": "node skills.js",
+    "build": "gulp"
   },
   "author": "Che Armstrong",
   "license": "ISC",
@@ -13,5 +14,19 @@
     "bluebird": "^3.5.0",
     "find-my-iphone": "^1.1.1",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.0.0",
+    "merge-stream": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chearmstrong/find-my-iphone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chearmstrong/find-my-iphone/issues"
+  },
+  "homepage": "https://github.com/chearmstrong/find-my-iphone#readme"
 }
