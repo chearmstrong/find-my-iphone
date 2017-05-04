@@ -1,4 +1,4 @@
-# findMyPhone
+# Find My iPhone
 
 Simple AWS Lambda function triggered from my custom Amazon Alexa skill.
 
