@@ -6,11 +6,11 @@ const Promise = require('bluebird');
 const icloud = Promise.promisifyAll(require('find-my-iphone').findmyphone);
 const app = new alexa.app();
 
-icloud.apple_id = process.env.ICLOUD_LOGIN || null;
-icloud.password = process.env.ICLOUD_PASSWORD || null;
+icloud.apple_id = process.env.ICLOUD_LOGIN || null; // me@icloud.com
+icloud.password = process.env.ICLOUD_PASSWORD || null; // P@55w0rd
 
-const homeLatLong = process.env.HOME_LAT_LONG ? process.env.HOME_LAT_LONG.split(',') : null;
-const deviceName = process.env.DEVICE_NAME || null;
+const homeLatLong = process.env.HOME_LAT_LONG ? process.env.HOME_LAT_LONG.split(',') : null; // 51.5033640,-0.1276250
+const deviceName = process.env.DEVICE_NAME || null; // Che
 
 
 app.intent('number', {
@@ -26,7 +26,7 @@ app.intent('number', {
 	let phone;
 	let location;
 
-	return icloud.getDevicesAsync()
+	icloud.getDevicesAsync()
 		.then(devices => {
 			device = _.filter(devices, d => {
 				return d.name === deviceName;
@@ -35,24 +35,20 @@ app.intent('number', {
 			location = {
 				lat: device[0].latitude,
 				long: device[0].longitude
-
 			};
 			return icloud.getDistanceOfDeviceAsync(device[0], homeLatLong[0], homeLatLong[1]);
 		})
 		.then(result => {
 			distance = result.distance.text;
-			// return icloud.alertDeviceAsync(device[0].id);
-			return Promise.resolve();
+			return icloud.alertDeviceAsync(device[0].id);
 		})
 		.then(() => {
-			// this is the bit that doesnt seem to be working :(
 			return response.say(`your ${phone} is ${distance} away from home. i've triggered an alert for you.`).send();
 		})
 		.catch(err => {
 			return response.say(err.message || err).send();
 		});
 
-	// because this is an async handler
 	return false;
 });
 
