@@ -26,21 +26,22 @@ app.intent('number', {
 	let phone;
 	let location;
 
-	icloud.getDevicesAsync()
+	return icloud.getDevicesAsync()
 		.then(devices => {
-			device = _.filter(devices, d => {
+			let filteredDevice = _.filter(devices, d => {
 				return d.name === deviceName;
 			});
-			phone = device[0].modelDisplayName;
+			device = filteredDevice[0]; // only want first one - should be one
+			phone = device.modelDisplayName;
 			location = {
-				lat: device[0].latitude,
-				long: device[0].longitude
+				lat: device.latitude,
+				long: device.longitude
 			};
-			return icloud.getDistanceOfDeviceAsync(device[0], homeLatLong[0], homeLatLong[1]);
+			return icloud.getDistanceOfDeviceAsync(device, homeLatLong[0], homeLatLong[1]);
 		})
 		.then(result => {
 			distance = result.distance.text;
-			return icloud.alertDeviceAsync(device[0].id);
+			return icloud.alertDeviceAsync(device.id);
 		})
 		.then(() => {
 			return response.say(`your ${phone} is ${distance} away from home. i've triggered an alert for you.`).send();
@@ -48,8 +49,6 @@ app.intent('number', {
 		.catch(err => {
 			return response.say(err.message || err).send();
 		});
-
-	return false;
 });
 
 // connect to lambda
