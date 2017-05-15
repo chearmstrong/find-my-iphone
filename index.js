@@ -13,7 +13,7 @@ const homeLatLong = process.env.HOME_LAT_LONG ? process.env.HOME_LAT_LONG.split(
 const deviceName = process.env.DEVICE_NAME || null; // Che
 
 
-app.intent('number', {
+app.intent('find', {
 	'slots': {},
 	'utterances': [
 		'{alert|find} my {phone|iphone|device}',
