@@ -1,7 +1,7 @@
 {
-  "name": "find-my-iphone",
+  "name": "lamda-find-my-iphone",
   "version": "1.0.0",
-  "description": "Alexa skill - find my iPhone",
+  "description": "Alexa skill - Find my iPhone",
   "main": "index.js",
   "scripts": {
     "skill": "node skills.js",
@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chearmstrong/find-my-iphone.git"
+    "url": "git+https://github.com/chearmstrong/lamda-find-my-iphone.git"
   },
   "bugs": {
-    "url": "https://github.com/chearmstrong/find-my-iphone/issues"
+    "url": "https://github.com/chearmstrong/lamda-find-my-iphone/issues"
   },
-  "homepage": "https://github.com/chearmstrong/find-my-iphone#readme"
+  "homepage": "https://github.com/chearmstrong/lamda-find-my-iphone#readme"
 }
