@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "skill": "node skills.js",
-    "build": "gulp"
+    "build": "gulp",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Che Armstrong",
   "license": "ISC",
@@ -13,7 +15,8 @@
     "alexa-app": "^4.0.0",
     "bluebird": "^3.5.0",
     "find-my-iphone": "^1.1.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "snyk": "^1.82.2"
   },
   "devDependencies": {
     "del": "^2.2.2",
@@ -28,5 +31,6 @@
   "bugs": {
     "url": "https://github.com/chearmstrong/lambda-find-my-iphone/issues"
   },
-  "homepage": "https://github.com/chearmstrong/lambda-find-my-iphone#readme"
+  "homepage": "https://github.com/chearmstrong/lambda-find-my-iphone#readme",
+  "snyk": true
 }
